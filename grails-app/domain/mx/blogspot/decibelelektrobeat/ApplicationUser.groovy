@@ -8,22 +8,22 @@ class ApplicationUser implements UserDetails, Serializable {
 
     String username
     String password
-    Boolean accountNonExpired
-    Boolean accountNonLocked
-    Boolean credentialsNonExpired
+    Boolean nonExpiredAccount
+    Boolean nonLockedAccount
+    Boolean nonExpiredCredentials
     Boolean forceLocalLogin
-    Boolean enabled
+    Boolean isAccountEnabled
 
     static hasMany 		= [roles: ApplicationRole]
 
     static constraints = {
         username nullable:false, blank:false, unique:true
         password nullable:false, blank:false
-        accountNonExpired nullable:false, blank:false
-        accountNonLocked nullable:false, blank:false
-        credentialsNonExpired nullable:false, blank:false
+        nonExpiredAccount nullable:false, blank:false
+        nonLockedAccount nullable:false, blank:false
+        nonExpiredCredentials nullable:false, blank:false
         forceLocalLogin nullable:false, blank:false
-        enabled nullable:false, blank:false
+        isAccountEnabled nullable:false, blank:false
     }
 
     @Override
@@ -35,22 +35,22 @@ class ApplicationUser implements UserDetails, Serializable {
 
     @Override
     boolean isAccountNonExpired() {
-        return accountNonExpired
+        return nonExpiredAccount
     }
 
     @Override
     boolean isAccountNonLocked(){
-        return accountNonLocked
+        return nonLockedAccount
     }
 
     @Override
     boolean isCredentialsNonExpired(){
-        return credentialsNonExpired
+        return nonExpiredCredentials
     }
 
     @Override
     boolean isEnabled(){
-        return enabled
+        return isAccountEnabled
     }
 
 }

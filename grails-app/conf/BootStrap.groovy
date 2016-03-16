@@ -17,12 +17,11 @@ class BootStrap {
             ApplicationUser user 		= new ApplicationUser()
             user.username 				= "john"
             user.password 				= bcryptService.hashPassword("john1234xx")
-            user.enabled 				= true
-            user.accountNonExpired 		= true
-            user.accountNonLocked 		= true
-            user.credentialsNonExpired 	= true
+            user.nonExpiredAccount 		= true
+            user.nonLockedAccount 		= true
+            user.nonExpiredCredentials 	= true
             user.forceLocalLogin 		= true
-
+            user.isAccountEnabled       = true
 
             user.roles 					= []
             user.roles 					<< user1Role
